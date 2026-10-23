@@ -1,0 +1,60 @@
+name: Compilar APK de Jarvis
+
+# Se ejecuta en cada cambio subido al repositorio, o a mano desde la
+# pestaña "Actions" (botón "Run workflow").
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Preparar Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Compilar el APK
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Renombrar el APK
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/debug/app-debug.apk "dist/Jarvis-0.1.${GITHUB_RUN_NUMBER}.apk"
+
+      - name: Guardar el APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Jarvis-0.1.${{ github.run_number }}
+          path: dist/*.apk
+
+      - name: Publicar en Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.${{ github.run_number }}
+          name: Jarvis 0.1.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          body: |
+            Versión compilada automáticamente desde la rama `${{ github.ref_name }}`.
+
+            Para instalar: toque el archivo **Jarvis-0.1.${{ github.run_number }}.apk** de abajo,
+            descárguelo y ábralo desde las notificaciones o la carpeta Descargas.
+          files: dist/*.apk

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jarvis</string>
+    <string name="mic_description">Hablar con Jarvis</string>
+    <string name="settings">Ajustes</string>
+    <string name="new_chat">Nueva conversación</string>
+    <string name="key_warning">Falta la clave de la API de Claude. Toca Ajustes para escribirla.</string>
+
+    <string name="status_idle">Toque el botón y hable, señor.</string>
+    <string name="status_listening">Escuchando…</string>
+    <string name="status_thinking">Pensando…</string>
+    <string name="status_speaking">Hablando…</string>
+    <string name="status_confirm">Esperando su confirmación (diga sí o no)…</string>
+    <string name="status_heard_nothing">No escuché nada. Toque el botón e intente de nuevo.</string>
+    <string name="status_need_mic">Jarvis necesita permiso del micrófono para escucharle.</string>
+    <string name="status_no_recognizer">Este celular no tiene reconocimiento de voz. Instale o active la app de Google.</string>
+    <string name="status_no_tts">No hay voz en español instalada. Vaya a Ajustes del celular → Texto a voz y descargue Español.</string>
+    <string name="status_new_chat">Conversación nueva. Olvidé lo anterior.</string>
+    <string name="log_you">Usted: %1$s</string>
+    <string name="log_jarvis">Jarvis: %1$s</string>
+
+    <string name="settings_title">Ajustes de Jarvis</string>
+    <string name="settings_key_label">Clave de la API de Claude</string>
+    <string name="settings_key_hint">sk-ant-…</string>
+    <string name="settings_key_help">Se guarda cifrada solo en este celular. Para cambiarla, pegue una nueva y guarde.</string>
+    <string name="settings_no_key">No hay ninguna clave guardada.</string>
+    <string name="settings_key_saved">Clave guardada ✓ (termina en …%1$s)</string>
+    <string name="settings_key_format">La clave debe empezar por sk-ant-</string>
+    <string name="settings_delete_key">Borrar clave</string>
+    <string name="settings_key_deleted">Clave borrada</string>
+    <string name="settings_model_label">Modelo</string>
+    <string name="settings_model_haiku">Claude Haiku 5.5 — rápido y económico (recomendado)</string>
+    <string name="settings_model_sonnet">Claude Sonnet 5.5 — más inteligente, cuesta unas 20 veces más</string>
+    <string name="settings_save">Guardar</string>
+    <string name="settings_saved">Ajustes guardados</string>
+</resources>
